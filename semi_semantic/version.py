@@ -50,6 +50,9 @@ class Version:
 
         return version_str
 
+    def __hash__(self):
+        return hash(self.__str__())
+
     # rich comparisons
     def __eq__(self, other):
         if self.release != other.release:
