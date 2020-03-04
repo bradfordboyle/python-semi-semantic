@@ -82,4 +82,4 @@ class Version:
         elif self.post_release is None and other.post_release is not None:
             return True
         else:
-            self.post_release < other.post_releasease
+            return self.post_release < other.post_release

@@ -118,8 +118,8 @@ class TestVersion(unittest.TestCase):
 
     def test_lt(self):
         self.assertLess(Version.parse("1.0-alpha"), Version.parse("1.0"))
-
         self.assertLess(Version.parse("1.0"), Version.parse("1.0+dev"))
+        self.assertLess(Version.parse("1.0+1"), Version.parse("1.0+2"))
 
     def test_hashable(self):
         v = Version.parse('1.2.3')
