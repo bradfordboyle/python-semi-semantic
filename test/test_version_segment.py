@@ -60,7 +60,7 @@ class TestVersionSegment(unittest.TestCase):
             ([[]], ValueError),
         ]
 
-        for (input_list, expected) in test_cases:
+        for input_list, expected in test_cases:
             with self.assertRaises(expected):
                 VersionSegment(input_list)
 
@@ -71,7 +71,7 @@ class TestVersionSegment(unittest.TestCase):
             ([1, "a", 0, 0], "1.a.0.0"),
         ]
 
-        for (components, expected) in test_cases:
+        for components, expected in test_cases:
             with self.subTest(components=components):
                 self.assertEqual(str(VersionSegment(components)), expected)
 
@@ -83,7 +83,7 @@ class TestVersionSegment(unittest.TestCase):
             ([1, "a", 0, 0], [1, "a", 0, 1]),
         ]
 
-        for (components, expected) in test_cases:
+        for components, expected in test_cases:
             with self.subTest(components=components):
                 self.assertEqual(
                     VersionSegment(components).increment().components, expected
@@ -96,7 +96,7 @@ class TestVersionSegment(unittest.TestCase):
             ([0, "-1"], TypeError),
         ]
 
-        for (components, expected) in test_cases:
+        for components, expected in test_cases:
             with self.subTest(components=components):
                 with self.assertRaises(expected):
                     VersionSegment(components).increment()
@@ -110,7 +110,7 @@ class TestVersionSegment(unittest.TestCase):
             (-2, [1, 1, 1], [1, 2, 0]),
         ]
 
-        for (index, components, expected) in test_cases:
+        for index, components, expected in test_cases:
             with self.subTest(index=index, omponents=components):
                 self.assertEqual(
                     VersionSegment(components).increment(index=index).components,
@@ -123,7 +123,7 @@ class TestVersionSegment(unittest.TestCase):
             ([1, 1, 1, 1], [1, 1, 1, 0]),
             ([1, "a", 0, 1], [1, "a", 0, 0]),
         ]
-        for (components, expected) in test_cases:
+        for components, expected in test_cases:
             with self.subTest(components=components):
                 self.assertEqual(
                     VersionSegment(components).decrement().components, expected
@@ -156,13 +156,13 @@ class TestVersionSegment(unittest.TestCase):
             (["a"], ["a", 0]),
         ]
 
-        for (components, expected) in test_cases:
+        for components, expected in test_cases:
             with self.subTest(components=components):
                 self.assertEqual(VersionSegment(components), VersionSegment(expected))
 
     def test_lt(self):
         test_cases = [([0], [1, 0]), ([1, 1], [1, 1, 1])]
-        for (components, expected) in test_cases:
+        for components, expected in test_cases:
             with self.subTest(components=components):
                 self.assertLess(VersionSegment(components), VersionSegment(expected))
 

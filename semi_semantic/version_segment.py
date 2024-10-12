@@ -103,7 +103,7 @@ def _lt_list(a, b):
     if len(a) != len(b):
         raise ValueError("lists must have the same length")
 
-    for (i, v1) in enumerate(a):
+    for i, v1 in enumerate(a):
         v2 = b[i]
         if type(v1) is str and type(v2) is int:
             return False
