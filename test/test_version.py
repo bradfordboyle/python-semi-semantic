@@ -122,6 +122,6 @@ class TestVersion(unittest.TestCase):
         self.assertLess(Version.parse("1.0+1"), Version.parse("1.0+2"))
 
     def test_hashable(self):
-        v = Version.parse('1.2.3')
+        v = Version.parse("1.2.3")
         d = {v: 1}
         self.assertEqual(d[v], 1)
